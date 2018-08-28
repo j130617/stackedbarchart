@@ -13,7 +13,7 @@ body { font: 12px Arial;}
     text-anchor: middle;
 }
 	
-/* .toolTip {
+.toolTip {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     position: absolute;
     display: none;
@@ -27,7 +27,7 @@ body { font: 12px Arial;}
     font: 12px sans-serif;
     padding: 5px;
     text-align: center;
-}*/
+}
 
 </style>
 <body>
@@ -57,9 +57,9 @@ var z = d3.scaleOrdinal()
     .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
  // Define the div for the tooltip
-//var tooltip = d3.select("body").append("div").attr("class", "tooltip"); 
+var tooltip = d3.select("body").append("div").attr("class", "toolTip"); 
 
-var tooltip = svg.append("g").attr("class", "tooltip").style("display", "none");
+//var tooltip = svg.append("g").attr("class", "tooltip").style("display", "none");
    
   tooltip.append("rect")
     .attr("width", 60)
@@ -99,7 +99,7 @@ d3.csv("data.csv", function(d, i, columns) {
       .attr("x", function(d) { return x(d.data.jaar); })
       .attr("y", function(d) { return y(d[1]); })
       .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-      .attr("width", x.bandwidth());
+      .attr("width", x.bandwidth())
     .on("mouseover", function() { tooltip.style("display", null); })
     .on("mouseout", function() { tooltip.style("display", "none"); })
     .on("mousemove", function(d) {
@@ -110,15 +110,7 @@ d3.csv("data.csv", function(d, i, columns) {
       tooltip.select("text").text(d[1]-d[0]);
     });
 	
-	//.on("mousemove", function(d){
-        //    tooltip
-          //    .style("left", d3.event.pageX + 10 + "px")
-            //  .style("top", d3.event.pageY - 25 + "px")
-              //.style("display", "inline-block")
-              //.html((d.key) + "<br>" + (d.y(d[1])) + " %");
-	      
-        //})
-    	//	.on("mouseout", function(d){ tooltip.style("display", "none");});	
+	
 
   svg.append("g")
       .attr("class", "axis")
