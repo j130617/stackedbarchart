@@ -57,7 +57,9 @@ var z = d3.scaleOrdinal()
     .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
  // Define the div for the tooltip
-var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+//var tooltip = d3.select("body").append("div").attr("class", "tooltip"); 
+
+var tooltip = svg.append("g").attr("class", "tooltip").style("display", "none");
    
   tooltip.append("rect")
     .attr("width", 60)
