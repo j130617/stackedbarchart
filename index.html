@@ -85,15 +85,25 @@ d3.csv("data.csv", function(d, i, columns) {
       .attr("y", function(d) { return y(d[1]); })
       .attr("height", function(d) { return y(d[0]) - y(d[1]); })
       .attr("width", x.bandwidth());
-         .on("mousemove", function(d){
-            tooltip
-              .style("left", d3.event.pageX + 10 + "px")
-              .style("top", d3.event.pageY - 25 + "px")
-              .style("display", "inline-block")
-              .html((d.key) + "<br>" + (d.y(d[1])) + " %");
+     	 .on("mouseover", function() { tooltip.style("display", null); })
+    	 .on("mouseout", function() { tooltip.style("display", "none"); })
+    	 .on("mousemove", function(d) {
+      		console.log(d);
+     		 var xPosition = d3.mouse(this)[0] - 5;
+     		 var yPosition = d3.mouse(this)[1] - 5;
+     		 tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+     		 tooltip.select("text").text(d[1]-d[0]);
+    });
+	
+	//.on("mousemove", function(d){
+        //    tooltip
+          //    .style("left", d3.event.pageX + 10 + "px")
+            //  .style("top", d3.event.pageY - 25 + "px")
+              //.style("display", "inline-block")
+              //.html((d.key) + "<br>" + (d.y(d[1])) + " %");
 	      
-        })
-    		.on("mouseout", function(d){ tooltip.style("display", "none");});	
+        //})
+    	//	.on("mouseout", function(d){ tooltip.style("display", "none");});	
 
   svg.append("g")
       .attr("class", "axis")
