@@ -5,6 +5,30 @@
   display: none;
 }*/
 
+body { font: 12px Arial;}
+	/*opmaak legenda*/
+.legend {
+    font-size: 10px;
+    /*font-weight: bold;*/
+    text-anchor: middle;
+}
+	
+.toolTip {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    background: none repeat scroll 0 0 white;
+    border: 0 none;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: -3px 3px 15px #888888;
+    color: black;
+    font: 12px sans-serif;
+    padding: 5px;
+    text-align: center;
+}
+
 </style>
 <body>
 
@@ -23,8 +47,8 @@ var svg = d3.select("body").append("svg")
     
 var x = d3.scaleBand()
     .rangeRound([0, width])
-    .paddingInner(0.05)
-    .align(0.1);
+    .paddingInner(0.1);
+    //.align(0.1);
 
 var y = d3.scaleLinear()
     .rangeRound([height, 0]);
